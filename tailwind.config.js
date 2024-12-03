@@ -18,6 +18,12 @@ module.exports = {
           "Noto Color Emoji",
         ],
       },
+      lineHeight: {
+        18: "5rem",
+      },
+      boxShadow: {
+        "inset-light": "inset 0 1px 0 0 #ffffff0d",
+      },
     },
   },
   plugins: [],

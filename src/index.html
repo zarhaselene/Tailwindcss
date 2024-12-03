@@ -3,19 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Tailwind</title>
     <script
       src="https://kit.fontawesome.com/839aa981e5.js"
       crossorigin="anonymous"
     ></script>
     <link href="./output.css" rel="stylesheet" />
   </head>
-  <body class="bg-brand relative font-sans">
+  <body
+    class="bg-brand bg-[url('/assets/hero-dark.jpg')] bg-center bg-no-repeat relative font-sans"
+  >
     <div
       id="blurOverlay"
       class="hidden fixed backdrop-blur-sm z-10 h-full w-full"
     ></div>
-    <div class="px-4 wrapper">
+    <div class="px-5 wrapper">
       <nav class="pt-6 relative flex items-center justify-between">
         <div class="logo">
           <img src="/assets/logo.svg" class="h-5" alt="Tailwind logo" />
@@ -39,20 +41,28 @@
             </div>
             <div id="themeContainer" class="hidden z-10">
               <ul
-                class="absolute right-14 mt-9 rounded-lg shadow-lg overflow-hidden w-36 py-1 text-sm font-semibold bg-slate-800 ring-0 text-slate-300"
+                class="absolute shadow-inset-light right-14 mt-9 rounded-lg shadow-lg overflow-hidden w-36 py-1 text-sm font-semibold bg-slate-800 ring-0 text-slate-300"
               >
                 <li class="py-2 px-3 flex items-center cursor-pointer">
-                  <img src="/assets/sun.svg" alt="sun icon" class="h-5" />
+                  <img
+                    src="/assets/sun.svg"
+                    alt="Light mode icon"
+                    class="h-5"
+                  />
                   <p class="ml-2 font-bold">Light</p>
                 </li>
                 <li
                   class="py-2 px-3 flex items-center cursor-pointer bg-slate-700 text-sky-500"
                 >
-                  <img src="/assets/theme.svg" alt="sun icon" class="h-5" />
+                  <img
+                    src="/assets/theme.svg"
+                    alt="Dark mode icon"
+                    class="h-5"
+                  />
                   <p class="ml-2 font-bold">Dark</p>
                 </li>
                 <li class="py-2 px-3 flex items-center cursor-pointer">
-                  <img src="/assets/system.svg" alt="sun icon" class="h-5" />
+                  <img src="/assets/system.svg" alt="System icon" class="h-5" />
                   <p class="ml-2 font-bold">System</p>
                 </li>
               </ul>
@@ -66,12 +76,13 @@
         >
           <div id="menuIcons" class="icons">
             <i
-              class="text-lg text-slate-500 p-3 fa-solid fa-magnifying-glass"
+              id="searchIcon"
+              class="text-lg text-slate-500 px-3 fa-solid fa-magnifying-glass"
               aria-hidden="true"
             ></i>
             <i
               id="miniMenuBtn"
-              class="text-lg text-slate-500 p-3 fa-solid fa-ellipsis-vertical"
+              class="text-lg text-slate-500 px-3 fa-solid fa-ellipsis-vertical"
               aria-hidden="true"
             ></i>
           </div>
@@ -93,22 +104,21 @@
               >
                 <div class="theme">Switch theme</div>
                 <select
-                  name=""
-                  id=""
+                  name="theme"
                   class="relative flex items-center rounded-lg shadow-sm p-2 font-semibold bg-slate-600 ring-0 text-slate-200"
                 >
-                  <option value="">Light</option>
-                  <option value="" selected>Dark</option>
-                  <option value="">System</option>
+                  <option value="light">Light</option>
+                  <option value="dark" selected>Dark</option>
+                  <option value="system">System</option>
                 </select>
               </div>
             </div>
           </div>
         </div>
       </nav>
-      <header class="pt-24 lg:pt-32 text-center relative max-w-5xl mx-auto">
+      <header class="pt-24 lg:pt-32 text-center max-w-5xl mx-auto">
         <h1
-          class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight"
+          class="leading-5 text-4xl md:text-5xl lg:text-6xl lg:leading-18 font-extrabold text-white tracking-tight"
         >
           Rapidly build modern websites without ever leaving your HTML.
         </h1>
@@ -122,13 +132,14 @@
         </p>
         <div class="buttons flex items-center justify-center mt-6">
           <button
-            class="flex items-center justify-center text-white bg-sky-500 hover:bg-sky-400 rounded-lg font-semibold px-6 h-12 w-full sm:w-auto shadow-inset-white"
+            class="flex shadow-inset-light items-center justify-center text-white bg-sky-500 hover:bg-sky-400 rounded-lg font-semibold px-6 h-12 w-full sm:w-auto shadow-inset-white"
           >
             Get started
           </button>
           <div class="search sm:block hidden">
             <button
-              class="relative ml-6 hidden sm:flex items-center w-72 text-left px-4 h-12 ring-0 shadow-inset-white rounded-lg bg-slate-800 text-slate-400"
+              id="searchBtn"
+              class="relative shadow-inset-light ml-6 hidden sm:flex items-center w-72 text-left px-4 h-12 ring-0 shadow-inset-white rounded-lg bg-slate-800 text-slate-400"
             >
               <i
                 class="text-lg text-slate-400 mr-5 fa-solid fa-magnifying-glass"
@@ -140,6 +151,35 @@
               </kbd>
             </button>
           </div>
+        </div>
+        <div
+          id="searchContainer"
+          class="search-container shadow-inset-light hidden absolute top-1/3 inset-0 m-auto z-10 md:max-w-4xl w-3/4 lg:w-full px-5 py-2 bg-slate-800 rounded-lg"
+        >
+          <div class="flex items-center">
+            <i
+              class="text-lg text-slate-500 fa-solid fa-magnifying-glass"
+              aria-hidden="true"
+            ></i>
+            <input
+              type="search"
+              name="search"
+              class="w-full p-3 bg-transparent focus:outline-none text-white"
+              placeholder="Search documentation"
+            />
+            <kbd
+              id="escapeBtn"
+              class="text-slate-400 bg-slate-600 px-2 py-1 rounded-lg"
+            >
+              <abbr title="Escape" class="no-underline text-xs font-bold"
+                >ESC</abbr
+              >
+            </kbd>
+          </div>
+          <div class="-mx-5 px-5 py-20 border-t border-b border-slate-300/10">
+            <p class="text-slate-400 text-lg">No recent searches</p>
+          </div>
+          <div class="p-3"></div>
         </div>
       </header>
     </div>
